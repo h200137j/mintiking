@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Generator - Mintiking Suppliers</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="invoice-card" id="invoice">
+        <!-- Header Section -->
+        <header class="invoice-header">
+          <h1 class="company-name">Mintiking Suppliers</h1>
+          <h2 class="invoice-title">INVOICE</h2>
+          <div class="invoice-meta">
+            <div class="invoice-number">
+              <span class="meta-label">Invoice #:</span>
+              <span class="meta-value">INV-2025-012</span>
+            </div>
+            <div class="invoice-date">
+              <span class="meta-label">Date:</span>
+              <span class="meta-value">January 15, 2024</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Recipient Section -->
+        <section class="recipient-section">
+          <div class="address-container">
+            <div class="invoice-to">
+              <h3 class="section-title">Invoice To:</h3>
+              <div class="recipient-details">
+                <p class="recipient-name">Radar Castings</p>
+                <p class="recipient-address">1910 Pprotland Road</p>
+                <p class="recipient-address">Heavy Industrial Site</p>
+                <p class="recipient-address">Gweru</p>
+              </div>
+            </div>
+            <div class="ship-to">
+              <h3 class="section-title">Ship To:</h3>
+              <div class="recipient-details">
+                <p class="recipient-name">Radar Castings</p>
+                <p class="recipient-address">1910 Pprotland Road</p>
+                <p class="recipient-address">Heavy Industrial Site</p>
+                <p class="recipient-address">Gweru</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Item Table Section -->
+        <section class="items-section">
+          <table class="items-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ferro Chrome</td>
+                <td>3626</td>
+                <td>$0.85</td>
+                <td>$3082.10</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Totals Section -->
+        <section class="totals-section">
+          <div class="totals-row">
+            <span class="totals-label">Subtotal:</span>
+            <span class="totals-value">$3082.10</span>
+          </div>
+          <div class="totals-row">
+            <span class="totals-label">VAT:</span>
+            <span class="totals-value">$0.00</span>
+          </div>
+          <div class="totals-row total-final">
+            <span class="totals-label">Total:</span>
+            <span class="totals-value">$3082.10</span>
+          </div>
+        </section>
+
+        <!-- Payment Details Section -->
+        <section class="payment-section">
+          <h3 class="section-title">Payment Details:</h3>
+          <div class="payment-details">
+            <div class="payment-row">
+              <span class="payment-label">Account Name:</span>
+              <span class="payment-value">Mintiking Suppliers Pvt Ltd</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Bank:</span>
+              <span class="payment-value">BancABC</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Account Number:</span>
+              <span class="payment-value">56802156602990</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Branch:</span>
+              <span class="payment-value">Kwekwe</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Action Section -->
+      <div class="action-section">
+        <button id="downloadBtn" class="download-btn">
+          Download Invoice (PDF)
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

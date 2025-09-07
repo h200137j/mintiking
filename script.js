@@ -220,7 +220,7 @@ function resetStyles() {
 function generateFilename() {
     const now = new Date();
     const timestamp = now.toISOString().slice(0, 19).replace(/:/g, '-');
-    return `Mintiking-Suppliers-Invoice-${timestamp}.pdf`;
+    return `Mintiking-Supplies-Invoice-${timestamp}.pdf`;
 }
 
 /**

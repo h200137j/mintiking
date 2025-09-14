@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delivery Note - Mintiking Supplies</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="invoice-card" id="delivery-note">
+        <!-- Header Section -->
+        <header class="invoice-header">
+          <h1 class="company-name">Mintiking Supplies</h1>
+          <h2 class="invoice-title">DELIVERY NOTE</h2>
+          <div class="invoice-meta">
+            <div class="invoice-number">
+              <span class="meta-label">Delivery Note #:</span>
+              <span class="meta-value">DN-2025-013</span>
+            </div>
+            <div class="invoice-date">
+              <span class="meta-label">Date:</span>
+              <span class="meta-value">September 11, 2025</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Recipient Section -->
+        <section class="recipient-section">
+          <div class="address-container">
+            <div class="invoice-to">
+              <h3 class="section-title">Customer:</h3>
+              <div class="recipient-details">
+                <p class="recipient-name">Radar Castings</p>
+                <p class="recipient-address">1910 Portland Road</p>
+                <p class="recipient-address">Heavy Industrial Site</p>
+                <p class="recipient-address">Gweru</p>
+              </div>
+            </div>
+            <div class="ship-to">
+              <h3 class="section-title">Delivery Address:</h3>
+              <div class="recipient-details">
+                <p class="recipient-name">Radar Castings</p>
+                <p class="recipient-address">1910 Portland Road</p>
+                <p class="recipient-address">Heavy Industrial Site</p>
+                <p class="recipient-address">Gweru</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Item Table Section -->
+        <section class="items-section">
+          <table class="items-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Quantity (KGs)</th>
+                <th>Package Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ferro Chrome</td>
+                <td>2204</td>
+                <td>Bulk Bags</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Signatures Section -->
+        <section class="signatures-section">
+          <div class="signature-container">
+            <div class="signature-box">
+              <p class="signature-title">Delivered By:</p>
+              <div class="signature-line"></div>
+              <p class="signature-name">Name: ____________________</p>
+              <p class="signature-details">ID Number: _________________</p>
+              <p class="signature-details">Date: _____________________</p>
+            </div>
+            <div class="signature-box">
+              <p class="signature-title">Received By:</p>
+              <div class="signature-line"></div>
+              <p class="signature-name">Name: ____________________</p>
+              <p class="signature-details">ID Number: _________________</p>
+              <p class="signature-details">Date: _____________________</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Notes Section -->
+        <section class="notes-section">
+          <h3 class="section-title">Notes:</h3>
+          <p class="note-text">
+            1. Please check that the quantity and quality of goods are correct before signing.<br>
+            2. This delivery note must be signed by an authorized person.<br>
+            3. Keep this document for your records.
+          </p>
+        </section>
+      </div>
+
+      <!-- Action Section -->
+      <div class="action-section">
+        <button id="downloadBtn" class="download-btn">
+          Download Delivery Note (PDF)
+        </button>
+      </div>
+    </div>
+
+    <script src="delivery-note.js"></script>
+  </body>
+</html>

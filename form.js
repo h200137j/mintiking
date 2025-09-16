@@ -12,11 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('documentDate').value = today;
     
-    // Show/hide price fields based on document type
+    // Show/hide invoice-specific fields based on document type
+    const invoiceNumberSection = document.getElementById('invoiceNumberSection');
+    
     documentType.addEventListener('change', function() {
         const isInvoice = this.value === 'invoice';
         priceSection.classList.toggle('hidden', !isInvoice);
         totalSection.classList.toggle('hidden', !isInvoice);
+        invoiceNumberSection.classList.toggle('hidden', !isInvoice);
         if (isInvoice) {
             calculateTotal();
         }
@@ -49,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
             date: document.getElementById('documentDate').value,
             quantity: quantity.value,
             unitPrice: unitPrice.value,
-            total: calculatedTotal.textContent
+            total: calculatedTotal.textContent,
+            invoiceNumber: document.getElementById('invoiceNumber').value
         };
         
         console.log('Form submission started');
@@ -103,6 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (formData.type === 'invoice') {
                 console.log('Processing invoice template');
                 console.log('Form data:', formData);
+                
+                // Update invoice number
+                const invoiceNumberElement = mainContent.querySelector('.invoice-number .meta-value');
+                if (invoiceNumberElement) {
+                    invoiceNumberElement.textContent = formData.invoiceNumber;
+                }
                 
                 // Update invoice specific content
                 const tableRow = mainContent.querySelector('.items-table tbody tr');

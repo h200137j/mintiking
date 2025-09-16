@@ -149,25 +149,76 @@ document.addEventListener('DOMContentLoaded', function() {
             docContent.innerHTML = mainContent.innerHTML;
             docContainer.appendChild(docContent);
             
-            // Configure PDF options
+            // Force desktop layout before generating PDF
+            docContainer.style.cssText = `
+                width: 800px !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 20px !important;
+                transform-origin: top left !important;
+            `;
+
+            // Force desktop styles for the content
+            const styleOverrides = document.createElement('style');
+            styleOverrides.textContent = `
+                @media print, screen {
+                    .container { 
+                        width: 800px !important;
+                        max-width: none !important;
+                        margin: 0 !important;
+                        padding: 20px !important;
+                    }
+                    .invoice-card {
+                        padding: 40px !important;
+                        width: 100% !important;
+                    }
+                    .company-name {
+                        font-size: 2.5rem !important;
+                    }
+                    .invoice-title {
+                        font-size: 1.5rem !important;
+                    }
+                    .items-table th,
+                    .items-table td {
+                        padding: 12px !important;
+                        font-size: 1rem !important;
+                    }
+                    /* Reset any mobile-specific styles */
+                    @media (max-width: 768px) {
+                        body { width: 800px !important; }
+                        .container { width: 800px !important; }
+                        .invoice-card { padding: 40px !important; }
+                    }
+                }
+            `;
+            docContainer.appendChild(styleOverrides);
+
+            // Configure PDF options with fixed dimensions
             const options = {
                 margin: [0.2, 0.2, 0.2, 0.2],
                 filename: generateFilename(formData.type),
                 image: { 
                     type: 'jpeg', 
-                    quality: 0.95 
+                    quality: 0.98
                 },
                 html2canvas: { 
-                    scale: 1.8,
+                    scale: 2,
                     useCORS: true,
                     letterRendering: true,
                     allowTaint: true,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#ffffff',
+                    windowWidth: 800,
+                    width: 800,
+                    scrollX: 0,
+                    scrollY: 0,
+                    x: 0,
+                    y: 0
                 },
                 jsPDF: { 
                     unit: 'in', 
                     format: 'a4', 
-                    orientation: 'portrait' 
+                    orientation: 'portrait',
+                    compress: true
                 }
             };
             

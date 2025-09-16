@@ -1,79 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800, initial-scale=1.0">
     <title>Document Generator - Mintiking Supplies</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
     <div class="container">
-      <div class="form-card">
-        <header class="form-header">
-          <h1 class="company-name">Mintiking Supplies</h1>
-          <h2 class="form-title">Document Generator</h2>
-        </header>
+        <div class="form-card">
+            <header class="form-header">
+                <h1 class="company-name">Mintiking Supplies</h1>
+                <h2 class="form-title">Document Generator</h2>
+                <p class="form-subtitle">Generate professional invoices and delivery notes instantly</p>
+            </header>
 
-        <form id="documentForm" class="document-form">
-          <div class="form-group">
-            <label for="documentType">Document Type:</label>
-            <select id="documentType" name="documentType" required>
-              <option value="">Select document type</option>
-              <option value="invoice">Invoice</option>
-              <option value="delivery">Delivery Note</option>
-            </select>
-          </div>
+            <form id="documentForm" class="document-form">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="documentType">
+                            <i class="fas fa-file-alt"></i>
+                            Document Type:
+                        </label>
+                        <select id="documentType" name="documentType" required>
+                            <option value="">Select document type</option>
+                            <option value="invoice">Invoice</option>
+                            <option value="delivery">Delivery Note</option>
+                        </select>
+                        <div class="form-hint">Choose the type of document you want to generate</div>
+                    </div>
 
-          <div class="form-group">
-            <label for="documentDate">Date:</label>
-            <input type="date" id="documentDate" name="documentDate" required />
-          </div>
+                    <div class="form-group">
+                        <label for="documentDate">
+                            <i class="fas fa-calendar"></i>
+                            Date:
+                        </label>
+                        <input type="date" id="documentDate" name="documentDate" required>
+                        <div class="form-hint">Select the date for your document</div>
+                    </div>
+                </div>
 
-          <div class="form-group">
-            <label for="quantity">Quantity (KGs):</label>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="1"
-              step="1"
-              required
-            />
-          </div>
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="quantity">
+                            <i class="fas fa-weight"></i>
+                            Quantity
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="number" id="quantity" name="quantity" min="1" step="1" required
+                                   placeholder="Enter quantity in KGs">
+                            <span class="unit-label">KGs</span>
+                        </div>
+                        <div class="form-hint">Enter the total weight in kilograms</div>
+                    </div>
 
-          <div id="pricePerUnit" class="form-group hidden">
-            <label for="unitPrice">Price per KG ($):</label>
-            <input
-              type="number"
-              id="unitPrice"
-              name="unitPrice"
-              value="0.85"
-              step="0.01"
-              min="0"
-            />
-          </div>
+                    <div id="pricePerUnit" class="form-group hidden">
+                        <label for="unitPrice">
+                            <i class="fas fa-dollar-sign"></i>
+                            Price per KG
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="number" id="unitPrice" name="unitPrice" value="0.85" step="0.01" min="0"
+                                   placeholder="0.85">
+                            <span class="unit-label">$</span>
+                        </div>
+                        <div class="form-hint">Price per kilogram (default: $0.85)</div>
+                    </div>
+                </div>
 
-          <div id="totalAmount" class="form-group hidden">
-            <label>Total Amount:</label>
-            <div class="total-display">
-              $<span id="calculatedTotal">0.00</span>
-            </div>
-          </div>
+                <div id="totalAmount" class="form-group total-section hidden">
+                    <div class="total-header">
+                        <i class="fas fa-calculator"></i>
+                        Total Amount
+                    </div>
+                    <div class="total-display">
+                        <span class="currency">$</span>
+                        <span id="calculatedTotal">0.00</span>
+                    </div>
+                </div>
 
-          <div class="form-actions">
-            <button type="submit" class="generate-btn">
-              Generate Document
-            </button>
-          </div>
-        </form>
-      </div>
+                <div class="form-actions">
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        <i class="fas fa-file-pdf"></i>
+                        Generate Document
+                        <span class="loading-spinner hidden"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <footer class="site-footer">
+        <p>Made with <i class="fas fa-heart"></i> by Calvin &copy; <span id="currentYear"></span></p>
+        <script>
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+
     <!-- Include necessary scripts -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-      defer
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
     <script src="form.js" defer></script>
-  </body>
+</body>
 </html>
